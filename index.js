@@ -1,6 +1,6 @@
 const app = require("express")();
 const { fork } = require("child_process")
-
+const port = process.env.PORT || 3000;
 app.get('/sendmail', (req, res) => {
     response1 = {
         semail: req.query.semail,
@@ -15,4 +15,4 @@ app.get('/sendmail', (req, res) => {
     childProcess.on("message", message => res.send(message));
 
 });
-app.listen(8081, () => console.log("Listening on 8081"))
+app.listen(port, () => console.log("Listening on {port}"))
